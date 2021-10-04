@@ -11,7 +11,7 @@ y = file.y_noisy;
 %% Estimation au sens des moindres carrés.
 
 dimension = 150;
-space = [-20; 40];
+space = [-25; 40];
 
 % On génère 150 points entre nos bornes [-25; 40].
 a = linspace(space(1), space(2), dimension);
@@ -34,9 +34,4 @@ xlabel('b'); ylabel('a');
 title('Moindres carrés');
 figure(2);
 mesh(a,b,moindresCarres);
-
-%% Question 2:
-% TODO : get Min of Matrix
-aMin = pointMoindreCarrees(1)
-bMin = pointMoindreCarrees(2)
 

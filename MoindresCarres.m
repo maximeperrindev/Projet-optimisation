@@ -1,5 +1,5 @@
 function [val] = MoindresCarres(a, b, x, y)
-  % Initialisation
+  % Val est la valeur  retournée par cette fonction
   val = 0;
   N = size(x, 1);
   % On effectue la méthode des moindres carrées pour chaque valeur de a et b sur
