@@ -36,5 +36,32 @@ figure(2);
 mesh(a,b,moindresCarres);
 
 %% Question 2:
-% TODO : get Min of Matrix
 [mina, minb] = MatrixMin(a, b, moindresCarres)
+
+figure;
+contour(a, b, moindresCarres, 100); xlabel('b'); ylabel('a');
+hold on;
+plot(minb, mina, '*r');
+hold off;
+legend({'Moindres carrés', 'Minimum'});
+title('Moindres carrés avec en  son centre le minimum calculé en a = 6.9 et b = -2.4');
+
+figure(3);
+plot(x,minb + x*mina,'-r');
+hold on;
+plot(x,y,'o');
+hold off;
+xlabel('a'); ylabel('b');
+title('Moindres carrées pour a = 6.9 et b = -2.4');
+grid('on');
+legend({'Moindre carrés', 'Points'});
+
+%% Question 3 :
+% Creation de la nouvelle matrice.
+xExtend = ones(size(x,1), 2);
+xExtend(:, 1) = x;
+
+% Calcul du résultat.
+quad = inv(xExtend'*xExtend)*xExtend'*y;
+aMinBetterAccuracy = quad(1,1)
+bMinBetterAccuracy = quad(2,1)
