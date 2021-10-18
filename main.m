@@ -39,12 +39,12 @@ mesh(a,b,moindresCarres);
 [mina, minb] = MatrixMin(a, b, moindresCarres)
 
 figure;
-contour(a, b, moindresCarres, 100); xlabel('b'); ylabel('a');
+contour(b, a, moindresCarres, 100); xlabel('b'); ylabel('a');
 hold on;
 plot(minb, mina, '*r');
 hold off;
 legend({'Moindres carrés', 'Minimum'});
-title('Moindres carrés avec en  son centre le minimum calculé en a = 6.9 et b = -2.4');
+title('Moindres carrés avec en son centre le minimum calculé en a = 6.9 et b = -2.4');
 
 figure(3);
 plot(x,minb + x*mina,'-r');
@@ -63,5 +63,27 @@ xExtend(:, 1) = x;
 
 % Calcul du résultat.
 quad = inv(xExtend'*xExtend)*xExtend'*y;
-aMinBetterAccuracy = quad(1,1)
-bMinBetterAccuracy = quad(2,1)
+aMinPrecis = quad(1,1)
+bMinPrecis = quad(2,1)
+
+%% Question 4:
+
+figure(4);
+contour(b, a, moindresCarres, 100); xlabel('b'); ylabel('a');
+hold on;
+plot(bMinPrecis, aMinPrecis, '*r');
+hold off;
+legend({'Moindres carrés', 'Minimum précis'});
+title('Moindres carrés avec en  son centre le minimum calculé en a = 6.9485 et b = -2.3803');
+
+%% Question 5:
+figure(5);
+plot(x, bMinPrecis + x * aMinPrecis, '-r');
+hold on;
+plot(x, minb + x * mina, '-b');
+plot(x, y, 'o');
+hold off;
+xlabel('a'); ylabel('b');
+legend({'Moindres carrés plus précis','Moindres carrés moins précis', 'Points'});
+title('Représentation de l''approximation des moindres carrés');
+
